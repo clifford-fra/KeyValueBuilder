@@ -19,14 +19,13 @@ export default class App extends LightningElement {
       keys.push(key.key);
     });
 
-    console.log('Get Keys returnes: ' + keys);
+    //console.log('Get Keys returnes: ' + keys);
 
     return keys;
   }
 
   set keys(keys) {
-
-    console.log('Entering Set Keys with: ' + keys);
+    //console.log('Entering Set Keys with: ' + keys);
     
     var x;
     for (x in keys) {
@@ -44,7 +43,6 @@ export default class App extends LightningElement {
   }
 
   @api get values() {
-
     var values = [];
 
     // Collecting and returning all values
@@ -52,14 +50,13 @@ export default class App extends LightningElement {
       values.push(key.value);
     });
 
-    console.log('Get Values returnes: ' + values);
+    //console.log('Get Values returnes: ' + values);
 
     return values;
   }
 
   set values(values) {
-
-    console.log('Entering Set Values with: ' + values);
+    // console.log('Entering Set Values with: ' + values);
     
     var x;
     for (x in values) {
@@ -77,7 +74,6 @@ export default class App extends LightningElement {
   }
 
   connectedCallback() {
-
     console.log('Entering Connected Callback');
  
     // If prefilled keys are provided as a string, create a collection
@@ -197,7 +193,7 @@ export default class App extends LightningElement {
   }
 
   hasDuplicates(array){
-    return new Set(array).size !== array.length 
+    return new Set(array).size !== array.length;
   }
 
   @api
@@ -218,6 +214,7 @@ export default class App extends LightningElement {
     if (!sameSize) {
       errorMessage = "Your Keys and Values do not have the same size.";
       validatedTo = false;
+
     } else if (this.required === true && hasEmptyKey) {
       errorMessage = "You must complete all empty keys.";
       validatedTo = false;
