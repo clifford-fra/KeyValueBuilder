@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Key Value Builder</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen" category="Input">
+            <property name="masterLabel" label="Master Label" type="String" role="inputOnly" description="The main label"/>
+            <property name="required" label="Requires Keys" type="Boolean" role="inputOnly" default="false" description="Will prevent transition if set to {!$GlobalConstant.True} and at least one key is empty"/>
+            <property name="requiredUniqueKeys" label="Requires Unique Keys" type="Boolean" role="inputOnly" default="false" description="Will prevent transition if set to {!$GlobalConstant.True} and keys contains duplicates"/>
+            <property name="requiredValues" label="Requires Values" type="Boolean" role="inputOnly" default="false" description="Will prevent transition if set to {!$GlobalConstant.True} and at least one value is empty"/>
+            <property name="prefilledKeys" label="Prefilled Keys" type="String[]" role="inputOnly" description="A text collection with prefilled keys"/>
+            <property name="prefilledKeysAsString" label="Prefilled Keys As String" type="String" role="inputOnly" description="A comma separated list as a String with prefilled keys"/>   
+            <property name="keys" label="Keys" type="String[]" description="A text collection with all keys"/>
+            <property name="values" label="Values" type="String[]" description="A text collection with all values"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

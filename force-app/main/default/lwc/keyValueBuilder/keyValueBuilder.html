@@ -1,0 +1,53 @@
+<!--
+	Lightning Web Component for Flow Screens: Key Value Builder by Clifford Beul
+
+	The Key Value Builder Screen Component allows you to create a String Map
+	by outputting two Text Collections of equal size: keys and values.
+	Add new or delete existing entries with the buttons on the right side.
+
+	20.02.2021	-	Clifford Beul	-	Version 1.0
+										The first version
+-->
+
+<template>
+	<div class="slds-m-vertical_x-small">
+		<span class="slds-text-title"><b>{masterLabel}</b></span>
+
+		<div class="slds-grid slds-wrap slds-gutters slds-grid_vertical-align-start">
+
+			<template iterator:it={items}>
+
+				<div key={it.value.name} class="slds-col slds-size_5-of-12">
+					<lightning-input type="text" label={it.value.key_label} data-id={it.index} value={it.value.key}
+						readonly={it.value.prefilled} required={required} onchange={handleKeyChange}>
+					</lightning-input>
+				</div>
+
+				<div key={it.value.name} class="slds-col slds-size_5-of-12">
+					<lightning-input type="text" label={it.value.value_label} data-id={it.index} value={it.value.value} required={requiredValues}
+						onchange={handleValueChange}>
+					</lightning-input>
+				</div>
+
+				<div key={it.value.name} class="slds-col slds-size_2-of-12 slds-m-top_large">
+					<template if:true={it.last}>
+						<lightning-button-icon icon-name="utility:add" alternative-text="Add Entry" class="slds-m-right_xx-small"
+							variant="border-filled" title="Add Entry" onclick={handleAdd}>
+						</lightning-button-icon>
+					</template>
+
+					<template if:false={it.first}>
+						<template if:false={it.value.prefilled}>
+							<lightning-button-icon icon-name="utility:delete" alternative-text="Delete Entry" title="Delete Entry"
+								variant="border-filled" data-id={it.index} onclick={handleDelete}>
+							</lightning-button-icon>
+						</template>
+					</template>
+				</div>
+
+			</template>
+
+		</div>
+
+	</div>
+</template>
